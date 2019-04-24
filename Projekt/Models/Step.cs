@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt
+namespace Projekt.Models
 {
     public class Step
     {
@@ -18,6 +18,7 @@ namespace Projekt
         [Display(Name = "Opis")]
         [Required]
         public string Description { get; set; }
+
 
         public virtual Task task { get; set; }
     }

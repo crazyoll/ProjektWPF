@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekt.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace Projekt
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void WindowLoaded(object sender, RoutedEventArgs e)
         {
             //jakies przykladowe dane aby sprawdzic dzialanie bazy
             //TaskDbContext db = new TaskDbContext();

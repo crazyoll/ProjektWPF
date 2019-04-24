@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projekt"
-        mc:Ignorable="d" Loaded="Window_Loaded"
+        mc:Ignorable="d" Loaded="WindowLoaded" xmlns:self="clr-namespace:Projekt.TreeViewController"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+    <Grid>
+        <TreeView Name="MainTreeView" Width="auto" Height="auto" Margin="10,10,180,10">
+            
+        </TreeView>
     </Grid>
 </Window>

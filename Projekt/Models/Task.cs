@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt
+namespace Projekt.Models
 {
     public class Task
     {
@@ -28,6 +28,7 @@ namespace Projekt
 
         [Display(Name ="Stopień pilnosci")]
         public int Priority { get; set; }
+
 
         public virtual ICollection<Step> Steps { get; set; }
         public virtual Category category { get; set; }

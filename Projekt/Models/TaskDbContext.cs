@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt
+namespace Projekt.Models
 {
     public class TaskDbContext : DbContext
     {

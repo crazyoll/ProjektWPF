@@ -1,3 +1,4 @@
+using Projekt.Models;
 namespace Projekt.Migrations
 {
     using System;
@@ -5,14 +6,14 @@ namespace Projekt.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Projekt.TaskDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TaskDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Projekt.TaskDbContext context)
+        protected override void Seed(TaskDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
