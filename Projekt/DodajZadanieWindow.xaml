@@ -1,0 +1,32 @@
+﻿<Window x:Class="Projekt.DodajZadanieWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt"
+        mc:Ignorable="d"
+        Title="DodajZadanieWindow" SizeToContent="Height" Width="270">
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right">Zapisz</Button>
+            </StackPanel>
+            <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                <TextBox Margin="4" Padding="3" >Nowe zadanie...</TextBox>
+            </Border>
+            <!-- Time Button-->
+            <Grid Grid.Row="2">
+                <DatePicker Margin="4" Name="pickDate"/>
+            </Grid>
+            <ComboBox Grid.Row="3" Margin="4" x:Name="CategoryComboBox" Loaded="CategoryComboBox_Loaded" 
+                      SelectionChanged="CategoryComboBox_SelectionChanged" Text="Brak kategori" IsEditable="True" IsReadOnly="True"/>
+
+        </Grid>
+    </Border>
+</Window>

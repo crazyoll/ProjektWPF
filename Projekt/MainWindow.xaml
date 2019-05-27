@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d" Loaded="Window_Loaded"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Side Menu Bar-->
+        <local:SideMenuControl>
+            <local:CategoryControl Height="40" VerticalAlignment="Top"/>
+        </local:SideMenuControl>
+        <local:SideTaskViewControl Grid.Column="1">
+            <local:TaskControl Height="50" VerticalAlignment="Top"/>
+        </local:SideTaskViewControl>
     </Grid>
 </Window>

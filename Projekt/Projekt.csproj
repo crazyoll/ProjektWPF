@@ -62,6 +62,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\CategoryControl.xaml.cs">
+      <DependentUpon>CategoryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SideMenuControl.xaml.cs">
+      <DependentUpon>SideMenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SideTaskViewControl.xaml.cs">
+      <DependentUpon>SideTaskViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TaskControl.xaml.cs">
+      <DependentUpon>TaskControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DodajZadanieWindow.xaml.cs">
+      <DependentUpon>DodajZadanieWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201904211352555_migration1.cs" />
     <Compile Include="Migrations\201904211352555_migration1.Designer.cs">
       <DependentUpon>201904211352555_migration1.cs</DependentUpon>
@@ -71,6 +86,26 @@
     <Compile Include="Models\Step.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TaskDbContext.cs" />
+    <Page Include="Controls\CategoryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SideMenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SideTaskViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TaskControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DodajZadanieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
