@@ -15,16 +15,16 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right">Zapisz</Button>
+                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddTaskToDB">Zapisz</Button>
             </StackPanel>
             <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                <TextBox Margin="4" Padding="3" >Nowe zadanie...</TextBox>
+                <TextBox Name="TaskNameBar" Margin="4" Padding="3" Text="Nowe zadanie..." />
             </Border>
             <!-- Time Button-->
             <Grid Grid.Row="2">
-                <DatePicker Margin="4" Name="pickDate"/>
+                <DatePicker Name="DateBar" Margin="4" Focusable = "False"/>
             </Grid>
-            <ComboBox Grid.Row="3" Margin="4" x:Name="CategoryComboBox" Loaded="CategoryComboBox_Loaded" 
+            <ComboBox Grid.Row="3" Margin="4" Name="CategoryBar" Loaded="CategoryComboBox_Loaded" 
                       SelectionChanged="CategoryComboBox_SelectionChanged" Text="Brak kategori" IsEditable="True" IsReadOnly="True"/>
 
         </Grid>

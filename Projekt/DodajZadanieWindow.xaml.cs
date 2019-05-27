@@ -19,15 +19,16 @@ namespace Projekt
     /// </summary>
     public partial class DodajZadanieWindow : Window
     {
+        private TaskDbContext db;
         public DodajZadanieWindow()
         {
             InitializeComponent();
+            db = new TaskDbContext();
         }
         private void CategoryComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> categoryList = new List<string>();
-            categoryList.Add("TestCategory1");
-            categoryList.Add("TestCategory2");
+
+            List<Category> categoryList = db.Categories.ToList();
 
             var comboBox = sender as ComboBox;
             comboBox.ItemsSource = categoryList;
@@ -38,6 +39,19 @@ namespace Projekt
         {
             var comboBox = sender as ComboBox;
             string value = comboBox.SelectedItem as string;
+        }
+
+        private void AddTaskToDB(object sender, RoutedEventArgs e)
+        {
+            Task task = new Task
+            {
+                Title = TaskNameBar.Text,
+                EndDate = DateBar.SelectedDate.Value,
+                category = (Category) CategoryBar.SelectedItem
+            };
+            db.Tasks.Add(task);
+            db.SaveChanges();
+            this.Close();
         }
     }
 }
