@@ -10,25 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekt
 {
     /// <summary>
-    /// Interaction logic for SideTaskViewControl.xaml
+    /// Interaction logic for AddCategoryWindow.xaml
     /// </summary>
-    public partial class SideTaskViewControl : UserControl
+    public partial class AddCategoryWindow : Window
     {
-        public SideTaskViewControl()
+        private TaskDbContext db = new TaskDbContext();
+        public AddCategoryWindow()
         {
             InitializeComponent();
         }
 
-        private void AddTask(object sender, RoutedEventArgs e)
+        private void AddCategoryToDB(object sender, RoutedEventArgs e)
         {
-            DodajZadanieWindow addWindow = new DodajZadanieWindow();
-            addWindow.ShowDialog();
+            Category category = new Category { Name = CategoryNameBar.Text };
+            db.Categories.Add(category);
+            db.SaveChanges();
+            this.Close();
         }
     }
 }

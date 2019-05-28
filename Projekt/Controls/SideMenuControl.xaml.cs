@@ -24,5 +24,11 @@ namespace Projekt
         {
             InitializeComponent();
         }
+
+        private void AddCategoryBtn(object sender, RoutedEventArgs e)
+        {
+            AddCategoryWindow addCategoryWindow = new AddCategoryWindow();
+            addCategoryWindow.ShowDialog();
+        }
     }
 }

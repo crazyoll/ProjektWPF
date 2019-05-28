@@ -5,28 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
-        Title="DodajZadanieWindow" SizeToContent="Height" Width="270">
+        Title="DodajZadanieWindow" SizeToContent="Height" Width="263.178" Height="354.015">
     <Border>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Margin="0,0,3,0">
             <StackPanel>
                 <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddTaskToDB">Zapisz</Button>
-            </StackPanel>
-            <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                <TextBox Name="TaskNameBar" Margin="4" Padding="3" Text="Nowe zadanie..." />
-            </Border>
-            <!-- Time Button-->
-            <Grid Grid.Row="2">
+                <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <TextBox Name="TaskNameBar" Margin="4" Padding="3" Text="Nowe zadanie..." />
+                </Border>
+                <TextBox Name="DescriptionBar" Margin="4" Padding="3" Text="Dodatkowy opis..." Height="116" />
                 <DatePicker Name="DateBar" Margin="4" Focusable = "False"/>
-            </Grid>
-            <ComboBox Grid.Row="3" Margin="4" Name="CategoryBar" Loaded="CategoryComboBox_Loaded" 
+                <ComboBox Grid.Row="3" Margin="4" Name="CategoryBar" Loaded="CategoryComboBox_Loaded"
                       SelectionChanged="CategoryComboBox_SelectionChanged" Text="Brak kategori" IsEditable="True" IsReadOnly="True"/>
-
+                <Label>Stopień pilności zadania:</Label>
+                <Slider Name="PriorityBar" Minimum="1" Maximum="5" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
+            </StackPanel>
         </Grid>
     </Border>
 </Window>

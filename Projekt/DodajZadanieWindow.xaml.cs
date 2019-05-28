@@ -37,8 +37,7 @@ namespace Projekt
 
         private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboBox = sender as ComboBox;
-            string value = comboBox.SelectedItem as string;
+
         }
 
         private void AddTaskToDB(object sender, RoutedEventArgs e)
@@ -46,7 +45,9 @@ namespace Projekt
             Task task = new Task
             {
                 Title = TaskNameBar.Text,
+                Description = DescriptionBar.Text,
                 EndDate = DateBar.SelectedDate.Value,
+                Priority = (int) PriorityBar.Value,
                 category = (Category) CategoryBar.SelectedItem
             };
             db.Tasks.Add(task);

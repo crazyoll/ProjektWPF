@@ -20,7 +20,7 @@
                         <Label Name="CategoryHeaderLabel" Margin="3" HorizontalAlignment="Center">Kategorie</Label>
                     </Border>
                     <ContentPresenter Grid.Row="1"/>
-                    <Button Grid.Row="2" Margin="3" Name="AddCategoryButton">Dodaj kategorie</Button>
+                    <Button Grid.Row="2" Margin="3" Name="AddCategoryButton" Click="AddCategoryBtn">Dodaj kategorie</Button>
                 </Grid>
             </Border>
         </ControlTemplate>
