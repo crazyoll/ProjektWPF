@@ -11,7 +11,7 @@
             <StackPanel>
                 <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddCategoryToDB">Zapisz</Button>
                 <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Name="CategoryNameBar" Margin="4" Padding="3" Text="Nazwa..." />
+                    <TextBox Name="CategoryNameBar" GotFocus="CategoryNameBarGotFocus" LostFocus="CategoryNameBarLostFocus" Margin="4" Padding="3" Text="Nazwa kategorii..." />
                 </Border>
                 
             </StackPanel>

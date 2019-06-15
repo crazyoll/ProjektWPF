@@ -32,5 +32,17 @@ namespace Projekt
             db.SaveChanges();
             this.Close();
         }
+
+        private void CategoryNameBarGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (CategoryNameBar.Text == "Nazwa kategorii...")
+                CategoryNameBar.Text = "";
+        }
+
+        private void CategoryNameBarLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(CategoryNameBar.Text))
+                CategoryNameBar.Text = "Nazwa kategorii...";
+        }
     }
 }

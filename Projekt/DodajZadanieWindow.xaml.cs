@@ -29,9 +29,9 @@ namespace Projekt
         {
 
             List<Category> categoryList = db.Categories.ToList();
-
             var comboBox = sender as ComboBox;
             comboBox.ItemsSource = categoryList;
+            comboBox.DisplayMemberPath = "Name";
             comboBox.SelectedItem = 0;
         }
 
@@ -47,12 +47,36 @@ namespace Projekt
                 Title = TaskNameBar.Text,
                 Description = DescriptionBar.Text,
                 EndDate = DateBar.SelectedDate.Value,
-                Priority = (int) PriorityBar.Value,
-                category = (Category) CategoryBar.SelectedItem
+                Priority = (int)PriorityBar.Value,
+                category = (Category)CategoryBar.SelectedItem
             };
             db.Tasks.Add(task);
             db.SaveChanges();
             this.Close();
+        }
+
+        private void TaskNameBarGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TaskNameBar.Text == "Nowe zadanie...")
+                TaskNameBar.Text = "";
+        }
+
+        private void TaskNameBarLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TaskNameBar.Text))
+                TaskNameBar.Text = "Nowe zadanie...";
+        }
+
+        private void DescriptionBarGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (DescriptionBar.Text == "Dodatkowy opis...")
+                DescriptionBar.Text = "";
+        }
+
+        private void DescriptionBarLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DescriptionBar.Text))
+                DescriptionBar.Text = "Dodatkowy opis...";
         }
     }
 }

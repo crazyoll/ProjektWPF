@@ -11,9 +11,9 @@
             <StackPanel>
                 <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddTaskToDB">Zapisz</Button>
                 <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Name="TaskNameBar" Margin="4" Padding="3" Text="Nowe zadanie..." />
+                    <TextBox Name="TaskNameBar" GotFocus="TaskNameBarGotFocus" LostFocus="TaskNameBarLostFocus" Margin="4" Padding="3" Text="Nowe zadanie..." />
                 </Border>
-                <TextBox Name="DescriptionBar" Margin="4" Padding="3" Text="Dodatkowy opis..." Height="116" />
+                <TextBox Name="DescriptionBar" GotFocus="DescriptionBarGotFocus" LostFocus="DescriptionBarLostFocus" Margin="4" Padding="3" Text="Dodatkowy opis..." Height="116" />
                 <DatePicker Name="DateBar" Margin="4" Focusable = "False"/>
                 <ComboBox Grid.Row="3" Margin="4" Name="CategoryBar" Loaded="CategoryComboBox_Loaded"
                       SelectionChanged="CategoryComboBox_SelectionChanged" Text="Brak kategori" IsEditable="True" IsReadOnly="True"/>
