@@ -44,5 +44,20 @@ namespace Projekt
             if (string.IsNullOrWhiteSpace(CategoryNameBar.Text))
                 CategoryNameBar.Text = "Nazwa kategorii...";
         }
+
+        private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonWindmowMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void ButtonWindowClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

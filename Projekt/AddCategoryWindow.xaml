@@ -4,17 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Dodaj Kategorię" SizeToContent="Height" Width="263.178" Height="108.04">
-    <Border>
-        <Grid Margin="0,0,3,0">
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Dodaj Kategorię" SizeToContent="Height" Width="270" Height="135">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="35"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource BarColorBrush }">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Dodaj Kategorię" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
+            <StackPanel Grid.Column="1" Height="35" WindowChrome.IsHitTestVisibleInChrome="True" 
+                        VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+
+                <Button Name="ButtonWindowMinimalize" Click="ButtonWindowMinimalize_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
+                <Button Name="ButtonWindmowMaximize" Click="ButtonWindmowMaximize_Click">
+                    <materialDesign:PackIcon Kind="WindowMaximize"/>
+                </Button>
+                <Button Name="ButtonWindowClose" Click="ButtonWindowClose_Click">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1">
             <StackPanel>
-                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddCategoryToDB">Zapisz</Button>
+                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddCategoryToDB" Background="{StaticResource ButtonColorBrush}">Zapisz</Button>
                 <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
                     <TextBox Name="CategoryNameBar" GotFocus="CategoryNameBarGotFocus" LostFocus="CategoryNameBarLostFocus" Margin="4" Padding="3" Text="Nazwa kategorii..." />
                 </Border>
-                
+
             </StackPanel>
         </Grid>
-    </Border>
+    </Grid>
+
 </Window>

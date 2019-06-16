@@ -20,6 +20,8 @@ namespace Projekt
         public MainWindow()
         {
             InitializeComponent();
+
+            //this.DataContext = new WindowViewModel(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -42,6 +44,33 @@ namespace Projekt
             //Step step = new Step { Id = 1, task = task, Description = "wazny krok", IsDone = false };
             //db.Steps.Add(step);
             //db.SaveChanges();
+        }
+
+        private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonWindmowMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void ButtonWindowClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            DodajZadanieWindow addTaskWindow = new DodajZadanieWindow();
+            addTaskWindow.ShowDialog();
+        }
+
+        private void AddCategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddCategoryWindow addCategoryWindow = new AddCategoryWindow();
+            addCategoryWindow.ShowDialog();
         }
     }
 }
