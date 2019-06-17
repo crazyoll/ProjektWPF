@@ -98,7 +98,7 @@ namespace Projekt
         {
             List<Task> TaskList = db.Tasks.ToList();
             listaZadan.ItemsSource = TaskList;
-            listaZadan.DisplayMemberPath = "CustomString";
+            //listaZadan.DisplayMemberPath = "CustomString";
         }
 
         //wyswietlenie zadan zaleznie od taskow
@@ -120,7 +120,7 @@ namespace Projekt
             //    listaZadan.DisplayMemberPath = "Title";
             //}
             listaZadan.ItemsSource = FilteredTaskList;
-            listaZadan.DisplayMemberPath = "CustomString";
+            //listaZadan.DisplayMemberPath = "CustomString";
         }
 
         private void listaZadan_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -131,6 +131,16 @@ namespace Projekt
                 //odswiezenie listy
                 ListaZadan_Loaded(null, null);
             }
+        }
+
+        private void ShowDoneButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteDoneButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

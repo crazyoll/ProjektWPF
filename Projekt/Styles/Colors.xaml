@@ -20,6 +20,15 @@
     <Color x:Key="BarColor">#D53736</Color>
     <SolidColorBrush x:Key="BarColorBrush" Color="{StaticResource BarColor}" />
 
+    <Color x:Key="ListItemColorLight">#FFAD9B</Color>
+    <SolidColorBrush x:Key="ListItemColorLightBrush" Color="{StaticResource ListItemColorLight}" />
+
+    <Color x:Key="ListItemColorDark">#F6564E</Color>
+    <SolidColorBrush x:Key="ListItemColorDarkBrush" Color="{StaticResource ListItemColorDark}" />
+
+    <Color x:Key="ListItemHighlight">#FF5E54</Color>
+    <SolidColorBrush x:Key="ListItemHighlightBrush" Color="{StaticResource ListItemHighlight}" />
+
     <Color x:Key="ButtonColor">#FFDCDCDC</Color>
     <SolidColorBrush x:Key="ButtonColorBrush" Color="{StaticResource ButtonColor}" />
 
