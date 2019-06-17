@@ -19,16 +19,19 @@ namespace Projekt
     /// </summary>
     public partial class SzczegolyZadaniaWindow : Window
     {
+        private TaskDbContext db;
         public Task task = null;
         public SzczegolyZadaniaWindow()
         {
+            db = TaskDbContext.GetInstance;
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //tu trzeba obsluzyc reszte
             TaskNameBar.Text = task.Title;
+            DescriptionBar.Text = task.Description;
+            PriorityBar.Value = task.Priority;
         }
 
         private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
@@ -48,12 +51,23 @@ namespace Projekt
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            task.IsDone = true;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Task newTask = new Task
+            {
+                Title = TaskNameBar.Text,
+                Description = DescriptionBar.Text,
+                EndDate = DateBar.SelectedDate.Value,
+                Priority = (int)PriorityBar.Value
+            };
+            db.Tasks.Remove(task);
+            db.Tasks.Add(newTask);
+            db.SaveChanges();
+            DialogResult = true;
+            this.Close();
         }
     }
 }
