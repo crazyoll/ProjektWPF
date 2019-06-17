@@ -17,10 +17,12 @@ namespace Projekt
 {
     public partial class MainWindow : Window
     {
+        private TaskDbContext db;
         public MainWindow()
         {
             InitializeComponent();
-
+            db = TaskDbContext.GetInstance;
+            ListaZadan_Loaded(null, null);
             //this.DataContext = new WindowViewModel(this);
         }
 
@@ -64,7 +66,12 @@ namespace Projekt
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             DodajZadanieWindow addTaskWindow = new DodajZadanieWindow();
-            addTaskWindow.ShowDialog();
+            addTaskWindow.category = listaKategorii.SelectedItem as Category;
+            if (addTaskWindow.ShowDialog() == true)
+            {
+                //odswiezenie listy
+                ListaKategorii_SelectionChanged(null, null);
+            }
         }
 
         private void AddCategoryButton_Click(object sender, RoutedEventArgs e)
@@ -77,19 +84,27 @@ namespace Projekt
             }
         }
 
+        //wyswietlenie wszystkich kategorii
         private void ListaKategorii_Loaded(object sender, RoutedEventArgs e)
         {
-            TaskDbContext db = new TaskDbContext();
             List<Category> categoryList = db.Categories.ToList();
             listaKategorii.ItemsSource = categoryList;
             listaKategorii.DisplayMemberPath = "Name";
             listaKategorii.SelectedItem = 0;
         }
 
+        //wyswietlenie wszystkich zadan
+        private void ListaZadan_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Task> TaskList = db.Tasks.ToList();
+            listaZadan.ItemsSource = TaskList;
+            listaZadan.DisplayMemberPath = "CustomString";
+        }
+
+        //wyswietlenie zadan zaleznie od taskow
         private void ListaKategorii_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TaskDbContext db = new TaskDbContext();
-           List<Category> xd = db.Categories.ToList();
+            List<Category> xd = db.Categories.ToList();
             List<Task> FilteredTaskList =
                 (from tasks in db.Tasks.ToList()
                  where tasks.category.Id == (listaKategorii.SelectedItem as Category).Id

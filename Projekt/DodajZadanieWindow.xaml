@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
-        Title="DodajZadanieWindow" SizeToContent="Height" Width="300" Height="380">
+        Title="DodajZadanieWindow" SizeToContent="Height" Width="300" Height="356.25">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35"/>
     </WindowChrome.WindowChrome>
@@ -47,8 +47,6 @@
                 </Border>
                 <TextBox Name="DescriptionBar" GotFocus="DescriptionBarGotFocus" LostFocus="DescriptionBarLostFocus" Margin="4" Padding="3" Text="Dodatkowy opis..." Height="116" />
                 <DatePicker Name="DateBar" Margin="4" Focusable = "False"/>
-                <ComboBox Grid.Row="3" Margin="4" Name="CategoryBar" Loaded="CategoryComboBox_Loaded"
-                          SelectionChanged="CategoryComboBox_SelectionChanged" Text="Brak kategori" IsEditable="True" IsReadOnly="True"/>
                 <Label>Stopień pilności zadania:</Label>
                 <Slider Name="PriorityBar" Minimum="1" Maximum="5" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
             </StackPanel>

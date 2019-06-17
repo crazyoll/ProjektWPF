@@ -20,10 +20,12 @@ namespace Projekt
     public partial class DodajZadanieWindow : Window
     {
         private TaskDbContext db;
+        public Category category = null;
         public DodajZadanieWindow()
         {
+            db = TaskDbContext.GetInstance;
             InitializeComponent();
-            db = new TaskDbContext();
+            
         }
         private void CategoryComboBox_Loaded(object sender, RoutedEventArgs e)
         {
@@ -48,10 +50,11 @@ namespace Projekt
                 Description = DescriptionBar.Text,
                 EndDate = DateBar.SelectedDate.Value,
                 Priority = (int)PriorityBar.Value,
-                category = (Category)CategoryBar.SelectedItem
+                category = category
             };
             db.Tasks.Add(task);
             db.SaveChanges();
+            DialogResult = true;
             this.Close();
         }
 

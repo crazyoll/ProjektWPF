@@ -19,10 +19,11 @@ namespace Projekt
     /// </summary>
     public partial class AddCategoryWindow : Window
     {
-        private TaskDbContext db = new TaskDbContext();
+        private TaskDbContext db;
         public AddCategoryWindow()
         {
             InitializeComponent();
+            db = TaskDbContext.GetInstance;
         }
 
         private void AddCategoryToDB(object sender, RoutedEventArgs e)
