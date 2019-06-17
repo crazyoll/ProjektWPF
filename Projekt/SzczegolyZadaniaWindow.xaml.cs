@@ -19,32 +19,16 @@ namespace Projekt
     /// </summary>
     public partial class SzczegolyZadaniaWindow : Window
     {
+        public Task task = null;
         public SzczegolyZadaniaWindow()
         {
             InitializeComponent();
         }
-        private void TaskNameBarGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (TaskNameBar.Text == "Nowe zadanie...")
-                TaskNameBar.Text = "";
-        }
 
-        private void TaskNameBarLostFocus(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TaskNameBar.Text))
-                TaskNameBar.Text = "Nowe zadanie...";
-        }
-
-        private void DescriptionBarGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (DescriptionBar.Text == "Dodatkowy opis...")
-                DescriptionBar.Text = "";
-        }
-
-        private void DescriptionBarLostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(DescriptionBar.Text))
-                DescriptionBar.Text = "Dodatkowy opis...";
+            //tu trzeba obsluzyc reszte
+            TaskNameBar.Text = task.Title;
         }
 
         private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)

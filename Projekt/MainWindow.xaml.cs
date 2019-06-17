@@ -126,6 +126,7 @@ namespace Projekt
         private void listaZadan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SzczegolyZadaniaWindow okno = new SzczegolyZadaniaWindow();
+            okno.task = listaZadan.SelectedItem as Task;
             if (okno.ShowDialog() == true)
             {
                 //odswiezenie listy
