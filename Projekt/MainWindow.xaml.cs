@@ -89,7 +89,7 @@ namespace Projekt
         {
             List<Category> categoryList = db.Categories.ToList();
             listaKategorii.ItemsSource = categoryList;
-            listaKategorii.DisplayMemberPath = "Name";
+            //listaKategorii.DisplayMemberPath = "Name";
             listaKategorii.SelectedItem = 0;
         }
 
@@ -139,6 +139,11 @@ namespace Projekt
         }
 
         private void DeleteDoneButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteCategoryButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
