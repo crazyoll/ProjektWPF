@@ -19,35 +19,16 @@ namespace Projekt
     /// </summary>
     public partial class SzczegolyZadaniaWindow : Window
     {
-        private TaskDbContext db;
-        public Task task = new Task();
+        public Task task = null;
         public SzczegolyZadaniaWindow()
         {
-            db = TaskDbContext.GetInstance;
             InitializeComponent();
         }
-        private void TaskNameBarGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (TaskNameBar.Text == "Nowe zadanie...")
-                TaskNameBar.Text = "";
-        }
 
-        private void TaskNameBarLostFocus(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TaskNameBar.Text))
-                TaskNameBar.Text = "Nowe zadanie...";
-        }
-
-        private void DescriptionBarGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (DescriptionBar.Text == "Dodatkowy opis...")
-                DescriptionBar.Text = "";
-        }
-
-        private void DescriptionBarLostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(DescriptionBar.Text))
-                DescriptionBar.Text = "Dodatkowy opis...";
+            //tu trzeba obsluzyc reszte
+            TaskNameBar.Text = task.Title;
         }
 
         private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
@@ -67,23 +48,12 @@ namespace Projekt
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            task.IsDone = true;
+            
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Task newTask = new Task
-            {
-                Title = TaskNameBar.Text,
-                Description = DescriptionBar.Text,
-                EndDate = DateBar.SelectedDate.Value,
-                Priority = (int)PriorityBar.Value
-            };
-            db.Tasks.Remove(task);
-            db.Tasks.Add(newTask);
-            db.SaveChanges();
-            DialogResult = true;
-            this.Close();
+
         }
     }
 }
