@@ -72,5 +72,35 @@ namespace Projekt
             AddCategoryWindow addCategoryWindow = new AddCategoryWindow();
             addCategoryWindow.ShowDialog();
         }
+
+        private void ListaKategorii_Loaded(object sender, RoutedEventArgs e)
+        {
+            TaskDbContext db = new TaskDbContext();
+            List<Category> categoryList = db.Categories.ToList();
+            listaKategorii.ItemsSource = categoryList;
+            listaKategorii.DisplayMemberPath = "Name";
+            listaKategorii.SelectedItem = 0;
+        }
+
+        private void ListaKategorii_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TaskDbContext db = new TaskDbContext();
+            List<Task> FilteredTaskList =
+                (from tasks in db.Tasks.ToList()
+                 where tasks.category.Id == (listaKategorii.SelectedItem as Category).Id
+                 select tasks).ToList();
+            //if (FilteredTaskList.Count == 0)
+            //{
+            //    listaZadan.ItemsSource = FilteredTaskList;
+            //    listaZadan.Items.Add("Brak zadań!");
+            //}
+            //else
+            //{
+            //    listaZadan.ItemsSource = FilteredTaskList;
+            //    listaZadan.DisplayMemberPath = "Title";
+            //}
+            listaZadan.ItemsSource = FilteredTaskList;
+            listaZadan.DisplayMemberPath = "Title";
+        }
     }
 }
