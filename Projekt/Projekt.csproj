@@ -105,6 +105,9 @@
     <Compile Include="Models\Step.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TaskDbContext.cs" />
+    <Compile Include="SzczegolyZadaniaWindow.xaml.cs">
+      <DependentUpon>SzczegolyZadaniaWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddCategoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +149,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SzczegolyZadaniaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

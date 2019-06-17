@@ -120,7 +120,17 @@ namespace Projekt
             //    listaZadan.DisplayMemberPath = "Title";
             //}
             listaZadan.ItemsSource = FilteredTaskList;
-            listaZadan.DisplayMemberPath = "Title";
+            listaZadan.DisplayMemberPath = "CustomString";
+        }
+
+        private void listaZadan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SzczegolyZadaniaWindow okno = new SzczegolyZadaniaWindow();
+            if (okno.ShowDialog() == true)
+            {
+                //odswiezenie listy
+                ListaZadan_Loaded(null, null);
+            }
         }
     }
 }
