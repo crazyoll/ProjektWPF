@@ -70,7 +70,11 @@ namespace Projekt
         private void AddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
             AddCategoryWindow addCategoryWindow = new AddCategoryWindow();
-            addCategoryWindow.ShowDialog();
+            if (addCategoryWindow.ShowDialog() == true)
+            {
+                //odswiezenie listy
+                ListaKategorii_Loaded(null, null);
+            }
         }
 
         private void ListaKategorii_Loaded(object sender, RoutedEventArgs e)
@@ -85,6 +89,7 @@ namespace Projekt
         private void ListaKategorii_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TaskDbContext db = new TaskDbContext();
+           List<Category> xd = db.Categories.ToList();
             List<Task> FilteredTaskList =
                 (from tasks in db.Tasks.ToList()
                  where tasks.category.Id == (listaKategorii.SelectedItem as Category).Id

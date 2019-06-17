@@ -30,6 +30,7 @@ namespace Projekt
             Category category = new Category { Name = CategoryNameBar.Text };
             db.Categories.Add(category);
             db.SaveChanges();
+            DialogResult = true;
             this.Close();
         }
 
