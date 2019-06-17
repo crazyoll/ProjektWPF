@@ -52,19 +52,18 @@ namespace Projekt
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
             task.IsDone = true;
+            db.Entry(task).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Task newTask = new Task
-            {
-                Title = TaskNameBar.Text,
-                Description = DescriptionBar.Text,
-                EndDate = DateBar.SelectedDate.Value,
-                Priority = (int)PriorityBar.Value
-            };
-            db.Tasks.Remove(task);
-            db.Tasks.Add(newTask);
+            task.Title = TaskNameBar.Text;
+            task.Description = DescriptionBar.Text;
+            task.EndDate = DateBar.SelectedDate.Value;
+            task.Priority = (int)PriorityBar.Value;
+
+            db.Entry(task).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             DialogResult = true;
             this.Close();
