@@ -135,7 +135,13 @@ namespace Projekt
 
         private void ShowDoneButton_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Category> xd = db.Categories.ToList();
+            List<Task> FilteredTaskList =
+                (from tasks1 in db.Tasks.ToList()
+                 where tasks1.IsDone == true
+                 select tasks1).ToList();
+            listaZadan.ItemsSource = FilteredTaskList;
+            //listaZadan.DisplayMemberPath = "CustomString";
         }
 
         private void DeleteDoneButton_Click(object sender, RoutedEventArgs e)
