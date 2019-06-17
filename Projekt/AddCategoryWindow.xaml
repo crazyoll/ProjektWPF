@@ -13,42 +13,51 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35"/>
     </WindowChrome.WindowChrome>
+    <Border Background="{StaticResource BackgroundColorBrush}">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid Background="{StaticResource BarColorBrush }">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Dodaj Kategorię" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
-            <StackPanel Grid.Column="1" Height="35" WindowChrome.IsHitTestVisibleInChrome="True" 
+            <Grid Background="{StaticResource BarColorBrush }">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Dodaj Kategorię" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
+                <StackPanel Grid.Column="1" Height="35" WindowChrome.IsHitTestVisibleInChrome="True" 
                         VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
 
-                <Button Name="ButtonWindowMinimalize" Click="ButtonWindowMinimalize_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize"/>
-                </Button>
-                <Button Name="ButtonWindmowMaximize" Click="ButtonWindmowMaximize_Click">
-                    <materialDesign:PackIcon Kind="WindowMaximize"/>
-                </Button>
-                <Button Name="ButtonWindowClose" Click="ButtonWindowClose_Click">
-                    <materialDesign:PackIcon Kind="WindowClose"/>
-                </Button>
-            </StackPanel>
-        </Grid>
-        
-        <Grid Grid.Row="1">
-            <StackPanel>
-                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddCategoryToDB" Background="{StaticResource ButtonColorBrush}">Zapisz</Button>
-                <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Name="CategoryNameBar" GotFocus="CategoryNameBarGotFocus" LostFocus="CategoryNameBarLostFocus" Margin="4" Padding="3" Text="Nazwa kategorii..." />
-                </Border>
+                    <Button Name="ButtonWindowMinimalize" Click="ButtonWindowMinimalize_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                    <Button Name="ButtonWindmowMaximize" Click="ButtonWindmowMaximize_Click">
+                        <materialDesign:PackIcon Kind="WindowMaximize"/>
+                    </Button>
+                    <Button Name="ButtonWindowClose" Click="ButtonWindowClose_Click">
+                        <materialDesign:PackIcon Kind="WindowClose"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
 
-            </StackPanel>
+            <Grid Grid.Row="1">
+                <StackPanel>
+                    <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddCategoryToDB" Background="{StaticResource ButtonColorBrush}"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center"/>
+                            <Label FontSize="11" Content="Zapisz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                        <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1" materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                        <TextBox Name="CategoryNameBar" GotFocus="CategoryNameBarGotFocus" LostFocus="CategoryNameBarLostFocus" Margin="4" Padding="3" Text="Nazwa kategorii..." />
+                    </Border>
+
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
-
+    </Border>
 </Window>

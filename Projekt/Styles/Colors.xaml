@@ -29,6 +29,9 @@
     <Color x:Key="ListItemHighlight">#FF5E54</Color>
     <SolidColorBrush x:Key="ListItemHighlightBrush" Color="{StaticResource ListItemHighlight}" />
 
+    <Color x:Key="BackgroundColor">#FFF5F5F5</Color>
+    <SolidColorBrush x:Key="BackgroundColorBrush" Color="{StaticResource BackgroundColor}" />
+
     <Color x:Key="ButtonColor">#FFDCDCDC</Color>
     <SolidColorBrush x:Key="ButtonColorBrush" Color="{StaticResource ButtonColor}" />
 

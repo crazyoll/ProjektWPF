@@ -147,5 +147,10 @@ namespace Projekt
         {
 
         }
+
+        private void CheckTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

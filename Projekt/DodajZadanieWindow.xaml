@@ -12,44 +12,55 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35"/>
     </WindowChrome.WindowChrome>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Border Background="{StaticResource BackgroundColorBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid Background="{StaticResource BarColorBrush }">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Dodaj Zadanie" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
-            <StackPanel Grid.Column="1" Height="35" WindowChrome.IsHitTestVisibleInChrome="True" 
+            <Grid Background="{StaticResource BarColorBrush }">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Dodaj Zadanie" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
+                <StackPanel Grid.Column="1" Height="35" WindowChrome.IsHitTestVisibleInChrome="True" 
                         VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
 
-                <Button Name="ButtonWindowMinimalize" Click="ButtonWindowMinimalize_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize"/>
-                </Button>
-                <Button Name="ButtonWindmowMaximize" Click="ButtonWindmowMaximize_Click">
-                    <materialDesign:PackIcon Kind="WindowMaximize"/>
-                </Button>
-                <Button Name="ButtonWindowClose" Click="ButtonWindowClose_Click">
-                    <materialDesign:PackIcon Kind="WindowClose"/>
-                </Button>
-            </StackPanel>
+                    <Button Name="ButtonWindowMinimalize" Click="ButtonWindowMinimalize_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                    <Button Name="ButtonWindmowMaximize" Click="ButtonWindmowMaximize_Click">
+                        <materialDesign:PackIcon Kind="WindowMaximize"/>
+                    </Button>
+                    <Button Name="ButtonWindowClose" Click="ButtonWindowClose_Click">
+                        <materialDesign:PackIcon Kind="WindowClose"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1"  >
+                <StackPanel Margin="7">
+                    <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddTaskToDB" Background="{StaticResource ButtonColorBrush}" materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center"/>
+                            <Label Grid.Column="1" FontSize="11" VerticalAlignment="Center" Content="Zapisz"/>
+                        </Grid>
+                    </Button>
+                    <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                        <TextBox Name="TaskNameBar" GotFocus="TaskNameBarGotFocus" LostFocus="TaskNameBarLostFocus" Margin="4" Padding="3" Text="Nowe zadanie..." />
+                    </Border>
+                    <TextBox Name="DescriptionBar" GotFocus="DescriptionBarGotFocus" LostFocus="DescriptionBarLostFocus" Margin="4" Padding="3" Text="Dodatkowy opis..." Height="116" />
+                    <DatePicker Name="DateBar" Margin="4" Focusable = "False"/>
+                    <Label>Stopień pilności zadania:</Label>
+                    <Slider Name="PriorityBar" Minimum="1" Maximum="5" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
+                </StackPanel>
+            </Grid>
         </Grid>
-        
-        <Grid Grid.Row="1"  >
-            <StackPanel Margin="7">
-                <Button Margin="4" Name="SaveButton" HorizontalAlignment="Right" Click="AddTaskToDB" Background="{StaticResource ButtonColorBrush}">Zapisz</Button>
-                <Border Margin="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Name="TaskNameBar" GotFocus="TaskNameBarGotFocus" LostFocus="TaskNameBarLostFocus" Margin="4" Padding="3" Text="Nowe zadanie..." />
-                </Border>
-                <TextBox Name="DescriptionBar" GotFocus="DescriptionBarGotFocus" LostFocus="DescriptionBarLostFocus" Margin="4" Padding="3" Text="Dodatkowy opis..." Height="116" />
-                <DatePicker Name="DateBar" Margin="4" Focusable = "False"/>
-                <Label>Stopień pilności zadania:</Label>
-                <Slider Name="PriorityBar" Minimum="1" Maximum="5" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
-            </StackPanel>
-        </Grid>
-    </Grid>
+    </Border>
 </Window>
