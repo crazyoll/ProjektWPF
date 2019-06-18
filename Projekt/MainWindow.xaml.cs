@@ -21,8 +21,8 @@ namespace Projekt
         public Task task = new Task();
         public MainWindow()
         {
-            InitializeComponent();
             db = TaskDbContext.GetInstance;
+            InitializeComponent();
             ListaZadan_Loaded(null, null);
         }
 
@@ -148,13 +148,19 @@ namespace Projekt
         private void SearchDB(object sender, TextChangedEventArgs args)
         {
             string text = SearchBar.Text;
-            if (text == "Wszystkie zadania")
-                return;
-            List<Task> searchingResult =
-                (from tasks in db.Tasks.ToList()
-                 where tasks.Title == text
-                 select tasks).ToList();
-            listaZadan.ItemsSource = searchingResult;
+            if (text != "Wszystkie zadania")
+            {
+                List<Task> TaskList = db.Tasks.ToList();
+                List<Task> FilteredList = new List<Task>();
+                foreach (Task task in TaskList)
+                {
+                    if (task.Title.ToLower().Contains(text.ToLower()))
+                    {
+                        FilteredList.Add(task);
+                    }
+                }
+                listaZadan.ItemsSource = FilteredList;
+            }
         }
     }
 }
