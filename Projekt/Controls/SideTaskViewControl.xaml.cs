@@ -24,5 +24,11 @@ namespace Projekt
         {
             InitializeComponent();
         }
+
+        private void AddTask(object sender, RoutedEventArgs e)
+        {
+            DodajZadanieWindow addWindow = new DodajZadanieWindow();
+            addWindow.ShowDialog();
+        }
     }
 }

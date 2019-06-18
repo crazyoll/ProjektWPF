@@ -19,25 +19,82 @@ namespace Projekt
     /// </summary>
     public partial class DodajZadanieWindow : Window
     {
+        private TaskDbContext db;
+        public Category category = null;
         public DodajZadanieWindow()
         {
+            db = TaskDbContext.GetInstance;
             InitializeComponent();
+            
         }
         private void CategoryComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> categoryList = new List<string>();
-            categoryList.Add("TestCategory1");
-            categoryList.Add("TestCategory2");
 
+            List<Category> categoryList = db.Categories.ToList();
             var comboBox = sender as ComboBox;
             comboBox.ItemsSource = categoryList;
+            comboBox.DisplayMemberPath = "Name";
             comboBox.SelectedItem = 0;
         }
 
         private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboBox = sender as ComboBox;
-            string value = comboBox.SelectedItem as string;
+
+        }
+
+        private void AddTaskToDB(object sender, RoutedEventArgs e)
+        {
+            Task task = new Task
+            {
+                Title = TaskNameBar.Text,
+                Description = DescriptionBar.Text,
+                EndDate = DateBar.SelectedDate.Value,
+                Priority = (int)PriorityBar.Value,
+                category = category
+            };
+            db.Tasks.Add(task);
+            db.SaveChanges();
+            DialogResult = true;
+            this.Close();
+        }
+
+        private void TaskNameBarGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TaskNameBar.Text == "Nowe zadanie...")
+                TaskNameBar.Text = "";
+        }
+
+        private void TaskNameBarLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TaskNameBar.Text))
+                TaskNameBar.Text = "Nowe zadanie...";
+        }
+
+        private void DescriptionBarGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (DescriptionBar.Text == "Dodatkowy opis...")
+                DescriptionBar.Text = "";
+        }
+
+        private void DescriptionBarLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DescriptionBar.Text))
+                DescriptionBar.Text = "Dodatkowy opis...";
+        }
+
+        private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonWindmowMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void ButtonWindowClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

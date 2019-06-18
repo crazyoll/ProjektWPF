@@ -10,7 +10,19 @@ namespace Projekt
 {
     public class TaskDbContext : DbContext
     {
-        public TaskDbContext() : base("DefaultConnection")
+        private static TaskDbContext instance = null;
+        public static TaskDbContext GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new TaskDbContext();
+                }
+                return instance;
+            }
+        }
+        private TaskDbContext() : base("DefaultConnection")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<TaskDbContext>());
         }

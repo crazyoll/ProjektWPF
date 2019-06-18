@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt
+namespace Projekt 
 {
     public class Task
     {
@@ -31,5 +32,15 @@ namespace Projekt
 
         public virtual ICollection<Step> Steps { get; set; }
         public virtual Category category { get; set; }
+
+
+        [NotMapped]
+        public string CustomString
+        {
+            get
+            {
+                return $"{Title}: {Description}";
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@
                         </Button>
                     </Grid>
                     <ContentPresenter Grid.Row="1"/>
-                    <Button Grid.Row="2" Margin="3" Name="AddTaskButton">Dodaj Zadanie</Button>
+                    <Button Grid.Row="2" Margin="3" Name="AddTaskButton" Click="AddTask">Dodaj Zadanie</Button>
                 </Grid>
             </Border>
         </ControlTemplate>
