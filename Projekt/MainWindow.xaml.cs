@@ -24,29 +24,6 @@ namespace Projekt
             InitializeComponent();
             db = TaskDbContext.GetInstance;
             ListaZadan_Loaded(null, null);
-            //this.DataContext = new WindowViewModel(this);
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //jakies przykladowe dane aby sprawdzic dzialanie bazy
-            //TaskDbContext db = new TaskDbContext();
-            //Category category = new Category { Id = 1, Name = "Done" };
-            //db.Categories.Add(category);
-            //Task task = new Task
-            //{
-            //    Id = 1,
-            //    category = category,
-            //    EndDate = DateTime.Now,
-            //    Description = "wazny opis",
-            //    Priority = 1,
-            //    Title = "bojowe zadanie",
-            //    IsDone = false
-            //};
-            //db.Tasks.Add(task);
-            //Step step = new Step { Id = 1, task = task, Description = "wazny krok", IsDone = false };
-            //db.Steps.Add(step);
-            //db.SaveChanges();
         }
 
         private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
@@ -90,7 +67,6 @@ namespace Projekt
         {
             List<Category> categoryList = db.Categories.ToList();
             listaKategorii.ItemsSource = categoryList;
-            //listaKategorii.DisplayMemberPath = "Name";
             listaKategorii.SelectedItem = 0;
         }
 
@@ -99,7 +75,6 @@ namespace Projekt
         {
             List<Task> TaskList = db.Tasks.ToList();
             listaZadan.ItemsSource = TaskList;
-            //listaZadan.DisplayMemberPath = "CustomString";
         }
 
         //wyswietlenie zadan zaleznie od taskow
@@ -109,25 +84,14 @@ namespace Projekt
                 (from tasks in db.Tasks.ToList()
                  where tasks.category.Id == (listaKategorii.SelectedItem as Category).Id
                  select tasks).ToList();
-            //if (FilteredTaskList.Count == 0)
-            //{
-            //    listaZadan.ItemsSource = FilteredTaskList;
-            //    listaZadan.Items.Add("Brak zadań!");
-            //}
-            //else
-            //{
-            //    listaZadan.ItemsSource = FilteredTaskList;
-            //    listaZadan.DisplayMemberPath = "Title";
-            //}
+
             listaZadan.ItemsSource = FilteredTaskList;
-            //listaZadan.DisplayMemberPath = "CustomString";
         }
 
         private void listaZadan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            task = listaZadan.SelectedItem as Task;
             SzczegolyZadaniaWindow okno = new SzczegolyZadaniaWindow();
-            okno.task = task;
+            okno.task = listaZadan.SelectedItem as Task;
             if (okno.ShowDialog() == true)
             {
                 //odswiezenie listy
@@ -160,12 +124,37 @@ namespace Projekt
 
         private void deleteCategoryButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć kategorie i powiązane z nia zadania?",
+                "Uwaga", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                Category c = listaKategorii.SelectedItem as Category;
+                List<Task> FilteredTaskList =
+                    (from tasks in db.Tasks.ToList()
+                    where tasks.category.Id == (listaKategorii.SelectedItem as Category).Id
+                    select tasks).ToList();
+                db.Categories.Remove(c);
+                foreach (Task task in FilteredTaskList)
+                {
+                    db.Tasks.Remove(task);
+                }
+                db.SaveChanges();
+                listaKategorii.SelectedIndex = 0;
+                ListaKategorii_Loaded(null, null);
+            }
 
         }
 
-        private void CheckTaskButton_Click(object sender, RoutedEventArgs e)
+        private void SearchDB(object sender, TextChangedEventArgs args)
         {
-
+            string text = SearchBar.Text;
+            if (text == "Wszystkie zadania")
+                return;
+            List<Task> searchingResult =
+                (from tasks in db.Tasks.ToList()
+                 where tasks.Title == text
+                 select tasks).ToList();
+            listaZadan.ItemsSource = searchingResult;
         }
     }
 }
