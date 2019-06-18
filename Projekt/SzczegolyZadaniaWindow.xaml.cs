@@ -29,9 +29,13 @@ namespace Projekt
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TaskNameBar.Text = task.Title;
-            DescriptionBar.Text = task.Description;
-            PriorityBar.Value = task.Priority;
+            if (task != null)
+            {
+                TaskNameBar.Text = task.Title;
+                DescriptionBar.Text = task.Description;
+                PriorityBar.Value = task.Priority;
+                DateBar.SelectedDate = task.EndDate;
+            }
         }
 
         private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
