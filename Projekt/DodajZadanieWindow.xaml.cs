@@ -44,18 +44,26 @@ namespace Projekt
 
         private void AddTaskToDB(object sender, RoutedEventArgs e)
         {
-            Task task = new Task
+            if ((TaskNameBar.Text == "Nowe zadanie...") || (DescriptionBar.Text == "Dodatkowy opis...") )
             {
-                Title = TaskNameBar.Text,
-                Description = DescriptionBar.Text,
-                EndDate = DateBar.SelectedDate.Value,
-                Priority = (int)PriorityBar.Value,
-                category = category
-            };
-            db.Tasks.Add(task);
-            db.SaveChanges();
-            DialogResult = true;
-            this.Close();
+                MessageBox.Show("Pola nie mogą być puste" , "Błąd danych", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Task task = new Task
+                {
+                    Title = TaskNameBar.Text,
+                    Description = DescriptionBar.Text,
+                    EndDate = DateBar.SelectedDate.Value,
+                    Priority = (int)PriorityBar.Value,
+                    category = category
+                };
+                db.Tasks.Add(task);
+                db.SaveChanges();
+                DialogResult = true;
+                this.Close();
+            }
+
         }
 
         private void TaskNameBarGotFocus(object sender, RoutedEventArgs e)
