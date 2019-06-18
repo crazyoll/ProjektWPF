@@ -48,7 +48,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center" Height="12" Width="12" RenderTransformOrigin="0.667,1.361" Margin="0,7,0,5"/>
                             <Label Grid.Column="1" FontSize="11" VerticalAlignment="Center" Content="Zapisz"/>
                         </Grid>
                     </Button>

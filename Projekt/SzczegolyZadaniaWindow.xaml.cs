@@ -72,5 +72,10 @@ namespace Projekt
             DialogResult = true;
             this.Close();
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

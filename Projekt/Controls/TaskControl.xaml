@@ -8,14 +8,14 @@
               d:DesignHeight="55" d:DesignWidth="130" FontSize="10">
 
     <Border BorderBrush="Black" BorderThickness="0.5">
-        <Grid Background="White" >
+        <Grid DataContext="{x:Static local:TestView.Instance}" Background="White" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="0.5*"/>
                 </Grid.RowDefinitions>
-                <Label Name="CategoryCardLabel" Content="TerminPlaceholder" HorizontalAlignment="Left"/>
+                <Label Name="CategoryCardLabel" Content="{Binding TitleTest}" HorizontalAlignment="Left"/>
                 <RadioButton Margin="3" Grid.Row="1" VerticalAlignment="Center" Content="ZadaniePlaceholder"/>
                 <Border Grid.Row="2" Background="Red"/>
             </Grid>

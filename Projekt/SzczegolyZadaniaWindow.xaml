@@ -9,7 +9,7 @@
         WindowStyle="None"
         Loaded="Window_Loaded"
         AllowsTransparency="True"
-        Title="Szczegóły zadania" SizeToContent="Height" Width="300" Height="356.25">
+        Title="Szczegóły zadania" SizeToContent="Height" Width="310" Height="356.25">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35"/>
     </WindowChrome.WindowChrome>
@@ -44,10 +44,32 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="4" Name="DoneButton" HorizontalAlignment="Left" Background="{StaticResource ButtonColorBrush}" Click="DoneButton_Click">Zakończone</Button>
-            <Button Grid.Column="1" Margin="4" Name="SaveButton" HorizontalAlignment="Right" Background="{StaticResource ButtonColorBrush}" Click="SaveButton_Click">Zapisz zmiany</Button>
+            <Button Grid.Column="0" Margin="4,4,0,4" Name="DoneButton"  Background="{StaticResource ButtonColorBrush}" Click="DoneButton_Click" HorizontalAlignment="Left" Width="118">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center" Height="12" Width="12" RenderTransformOrigin="0.667,1.361" Margin="0,7,0,5"/>
+                    <Label Grid.Column="1" FontSize="11" VerticalAlignment="Center" Content=" Zakończone"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="1" Margin="4" Name="SaveButton"  Background="{StaticResource ButtonColorBrush}" Click="SaveButton_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center" Height="12" Width="12" RenderTransformOrigin="0.667,1.361" Margin="0,7,0,5"/>
+                    <Label Grid.Column="1" FontSize="11" VerticalAlignment="Center" Content="Zapisz zmiany"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="2" Margin="0,4,4,4" Name="DeleteButton" Background="{StaticResource ButtonColorBrush}" Click="DeleteButton_Click" HorizontalAlignment="Right" Width="48">
+                <materialDesign:PackIcon Kind="TrashCan"/>
+            </Button>
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Margin="7">

@@ -35,4 +35,20 @@
     <Color x:Key="ButtonColor">#FFDCDCDC</Color>
     <SolidColorBrush x:Key="ButtonColorBrush" Color="{StaticResource ButtonColor}" />
 
+    <!--Priority Colors-->
+    <Color x:Key="PriorityNoneColor">#FFAE9C</Color>
+    <SolidColorBrush x:Key="PriorityNoneColorBrush" Color="{StaticResource PriorityNoneColor}" />
+
+    <Color x:Key="PriorityLowColor">#FF9081</Color>
+    <SolidColorBrush x:Key="PriorityLowColorBrush" Color="{StaticResource PriorityLowColor}" />
+
+    <Color x:Key="PriorityNormalColor">#FF7367</Color>
+    <SolidColorBrush x:Key="PriorityNormalColorBrush" Color="{StaticResource PriorityNormalColor}" />
+
+    <Color x:Key="PriorityHighColor">#F6564E</Color>
+    <SolidColorBrush x:Key="PriorityHighColorBrush" Color="{StaticResource PriorityHighColor}" />
+
+    <Color x:Key="PriorityExtrimeColor">#D53736</Color>
+    <SolidColorBrush x:Key="PriorityExtrimeColorBrush" Color="{StaticResource PriorityExtrimeColor}" />
+
 </ResourceDictionary>
