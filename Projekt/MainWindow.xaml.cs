@@ -105,7 +105,6 @@ namespace Projekt
         //wyswietlenie zadan zaleznie od taskow
         private void ListaKategorii_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<Category> xd = db.Categories.ToList();
             List<Task> FilteredTaskList =
                 (from tasks in db.Tasks.ToList()
                  where tasks.category.Id == (listaKategorii.SelectedItem as Category).Id
@@ -138,12 +137,25 @@ namespace Projekt
 
         private void ShowDoneButton_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Task> FilteredTaskList =
+                (from tasks in db.Tasks.ToList()
+                 where tasks.IsDone == true
+                 select tasks).ToList();
+            listaZadan.ItemsSource = FilteredTaskList;
         }
 
         private void DeleteDoneButton_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Task> list = db.Tasks.ToList();
+            foreach(Task task in list)
+            {
+                if(task.IsDone == true)
+                {
+                    db.Tasks.Remove(task);
+                }
+            }
+            db.SaveChanges();
+            ListaZadan_Loaded(null, null);
         }
 
         private void deleteCategoryButton_Click(object sender, RoutedEventArgs e)
