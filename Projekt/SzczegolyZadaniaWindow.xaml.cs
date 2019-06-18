@@ -19,32 +19,19 @@ namespace Projekt
     /// </summary>
     public partial class SzczegolyZadaniaWindow : Window
     {
+        private TaskDbContext db;
+        public Task task = null;
         public SzczegolyZadaniaWindow()
         {
+            db = TaskDbContext.GetInstance;
             InitializeComponent();
         }
-        private void TaskNameBarGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (TaskNameBar.Text == "Nowe zadanie...")
-                TaskNameBar.Text = "";
-        }
 
-        private void TaskNameBarLostFocus(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TaskNameBar.Text))
-                TaskNameBar.Text = "Nowe zadanie...";
-        }
-
-        private void DescriptionBarGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (DescriptionBar.Text == "Dodatkowy opis...")
-                DescriptionBar.Text = "";
-        }
-
-        private void DescriptionBarLostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(DescriptionBar.Text))
-                DescriptionBar.Text = "Dodatkowy opis...";
+            TaskNameBar.Text = task.Title;
+            DescriptionBar.Text = task.Description;
+            PriorityBar.Value = task.Priority;
         }
 
         private void ButtonWindowMinimalize_Click(object sender, RoutedEventArgs e)
@@ -64,12 +51,22 @@ namespace Projekt
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            task.IsDone = true;
+            db.Entry(task).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            task.Title = TaskNameBar.Text;
+            task.Description = DescriptionBar.Text;
+            task.EndDate = DateBar.SelectedDate.Value;
+            task.Priority = (int)PriorityBar.Value;
 
+            db.Entry(task).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            DialogResult = true;
+            this.Close();
         }
     }
 }

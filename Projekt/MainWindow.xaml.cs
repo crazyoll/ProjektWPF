@@ -18,6 +18,7 @@ namespace Projekt
     public partial class MainWindow : Window
     {
         private TaskDbContext db;
+        public Task task = new Task();
         public MainWindow()
         {
             InitializeComponent();
@@ -125,7 +126,9 @@ namespace Projekt
 
         private void listaZadan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            task = listaZadan.SelectedItem as Task;
             SzczegolyZadaniaWindow okno = new SzczegolyZadaniaWindow();
+            okno.task = task;
             if (okno.ShowDialog() == true)
             {
                 //odswiezenie listy
